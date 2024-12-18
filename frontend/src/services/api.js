@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API = axios.create({ baseURL: 'https://login-t8zz.onrender.com' });
+const API = axios.create({ baseURL: 'https://login-t8zz.onrender.com/api' });
 
 // Signup API call
 export const signup = async (userData) => {
