@@ -30,6 +30,7 @@ app.use(cors({
   },
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true, // Allow credentials (cookies, headers)
+  allowedHeaders: ['Content-Type', 'Authorization'], // Allow these headers to be included in requests
 }));
 
 // Middleware
