@@ -13,13 +13,27 @@ connectDB();
 // Initialize Express App
 const app = express();
 
+// List of allowed origins
+const allowedOrigins = [
+  'https://67625cb11c02658092371ce6--melodious-medovik-c34b46.netlify.app', // Frontend 1
+  'https://euphonious-buttercream-6950f4.netlify.app'  // Frontend 2
+];
+
+// CORS middleware
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  credentials: true, // Allow credentials (cookies, headers)
+}));
+
 // Middleware
 app.use(express.json());
-app.use(cors({ // Configure CORS here
-    origin: 'https://67625cb11c02658092371ce6--melodious-medovik-c34b46.netlify.app/', // Replace with your Netlify URL
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true,
-}));
 
 // Routes
 app.use('/api/auth', authRoutes);
