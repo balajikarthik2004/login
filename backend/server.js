@@ -5,14 +5,6 @@ const connectDB = require('./config/db');
 const authRoutes = require('./routes/auth');
 
 
-app.use(cors(
-    {
-        origin: ["https://deploy-mern-frontend.vercel.app"],
-        methods: ["POST", "GET"],
-        credentials: true
-    }
-));
-
 // Load environment variables
 dotenv.config();
 
